@@ -1,11 +1,31 @@
+# android_device_J608_PUBLIC
+DOOOGEE-KISSME DG580 Configuration
+
+Basic   | Spec Sheet
+-------:|:-------------------------
+CodeName| J608_PUBLIC
+SoC     | MediaTek MT6582
+CPU     | ARM Cortex-A7,1300 MHz Cores: 4
+GPU     | ARM Mali-400 MP2,500MHz Cores: 2
+Memory  | 1GB RAM, 533MHz
+Shipped Android Version | 4.4.2
+Storage | 8GB
+Battery | 2500 mAh
+Display | 5.5" 960 x 540 px
+Camera  | 8MPx, LED Flash
+
+![Alt text](http://www.lenteen.de/images/product-images/DOOGEE-KISSME-DG580-7.jpg?raw=true)
+
+
+Status	|	Comment
+-------:|:--------------------------
+CMVERSION | 12.1
+BUILD   | YES
+BOOT    | Recovery boots
+BUGS    | Can't Boot so I dont Know
+KERNEL  | Using Prebuilt Binaries extracted from Stock rom
+
 # Build
-
-* features
-
-  * wifi
-  * gsm (call in / call out / hangout)
-  * egl
-  * sound
 
 * init
 

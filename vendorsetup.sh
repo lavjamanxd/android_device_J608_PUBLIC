@@ -1,0 +1,1 @@
+add_lunch_combo cm_J608_PUBLIC-userdebug
