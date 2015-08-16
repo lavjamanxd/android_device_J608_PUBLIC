@@ -13,7 +13,7 @@ DEVICE_PACKAGE_OVERLAYS += device/doogee/J608_PUBLIC/overlay
 
 LOCAL_PATH := device/doogee/J608_PUBLIC
 ifeq ($(TARGET_PREBUILT_KERNEL),)
-	LOCAL_KERNEL := $(LOCAL_PATH)/kernel
+	LOCAL_KERNEL := $(LOCAL_PATH)/kernel.img
 else
 	LOCAL_KERNEL := $(TARGET_PREBUILT_KERNEL)
 endif
@@ -51,7 +51,8 @@ PRODUCT_COPY_FILES += \
     device/doogee/J608_PUBLIC/root/init.protect.rc:root/init.protect.rc \
     device/doogee/J608_PUBLIC/root/init.project.rc:root/init.project.rc \
     device/doogee/J608_PUBLIC/root/init.usb.rc:root/init.usb.rc \
-    $(LOCAL_KERNEL):kernel
+    device/doogee/J608_PUBLIC/root/sbin/busybox:root/sbin/busybox \
+    $(LOCAL_KERNEL):kernel.img 
 
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
