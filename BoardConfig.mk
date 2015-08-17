@@ -29,7 +29,7 @@ TARGET_USERIMAGES_USE_EXT4:=true
 TARGET_USERIMAGES_SPARSE_EXT_DISABLED := false
 
 BOARD_KERNEL_CMDLINE := 
-BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --tags_offset 0x00000100
+BOARD_MKBOOTIMG_ARGS := --kernel_offset 0x00008000 --ramdisk_offset 0x01000000 --second_offset 0x00f00000 --tags_offset 0x00000100
 BOARD_KERNEL_BASE := 0x10000000
 BOARD_KERNEL_PAGESIZE := 2048
 BOARD_CUSTOM_BOOTIMG_MK := device/doogee/J608_PUBLIC/bootimg.mk
@@ -56,7 +56,7 @@ BOARD_SEPOLICY_UNION := \
        system.te \
        file_contexts
 
-TARGET_PREBUILT_KERNEL := device/doogee/J608_PUBLIC/kernel.img
+TARGET_PREBUILT_KERNEL := device/doogee/J608_PUBLIC/kernel
 TARGET_RECOVERY_FSTAB := device/doogee/J608_PUBLIC/recovery.fstab
 
 BOARD_HAS_NO_SELECT_BUTTON := true
