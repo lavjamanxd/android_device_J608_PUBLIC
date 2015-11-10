@@ -51,8 +51,9 @@ PRODUCT_COPY_FILES += \
     device/doogee/J608_PUBLIC/root/init.protect.rc:root/init.protect.rc \
     device/doogee/J608_PUBLIC/root/init.project.rc:root/init.project.rc \
     device/doogee/J608_PUBLIC/root/init.usb.rc:root/init.usb.rc \
-    device/doogee/J608_PUBLIC/root/sbin/busybox:root/sbin/busybox
-
+    device/doogee/J608_PUBLIC/root/sbin/busybox:root/sbin/busybox \
+    device/doogee/J608_PUBLIC/root/enableswap.sh:root/enableswap.sh
+    
 PRODUCT_COPY_FILES += \
 	frameworks/native/data/etc/handheld_core_hardware.xml:system/etc/permissions/handheld_core_hardware.xml \
 	frameworks/native/data/etc/android.hardware.wifi.xml:system/etc/permissions/android.hardware.wifi.xml \
@@ -73,13 +74,21 @@ PRODUCT_COPY_FILES += \
 
 $(call inherit-product, build/target/product/full.mk)
 
-+PRODUCT_PROPERTY_OVERRIDES := \
+PRODUCT_PROPERTY_OVERRIDES := \
    ro.mediatek.version.release=ALPS.KK1.MP1.V2.10 \
    ro.mediatek.platform=MT6582 \
    ro.mediatek.chip_ver=S01 \
    ro.mediatek.version.branch=KK1.MP1 \
    ro.mediatek.version.sdk=2 \
    persist.mtk.wcn.combo.chipid=-1
+
+DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
+DEFAULT_PROPERTY_OVERRIDES += ro.secure=0
+DEFAULT_PROPERTY_OVERRIDES += ro.allow.mock.location=0
+ADDITIONAL_DEFAULT_PROPERTIES += persist.mtk.aee.aed=on
+ADDITIONAL_DEFAULT_PROPERTIES += persist.service.acm.enable=0
+ADDITIONAL_DEFAULT_PROPERTIES += ro.mount.fs=EXT4
+ADDITIONAL_DEFAULT_PROPERTIES += persist.sys.usb.config=mtp
 
 PRODUCT_NAME := full_J608_PUBLIC
 PRODUCT_DEVICE := doogee
