@@ -39,6 +39,12 @@ $(INSTALLED_RAMDISK_TARGET).mtk: $(INSTALLED_RAMDISK_TARGET).mtk.header
 		mv out/target/product/J608_PUBLIC/root/init out/target/product/J608_PUBLIC/root/init2; \
 		cp device/doogee/J608_PUBLIC/root/custom_init out/target/product/J608_PUBLIC/root/init; \
 	fi
+
+#remove unnecessary files before creating an img, there should be a better solution to get rid of those files
+	rm out/target/product/J608_PUBLIC/root/fstab.goldfish; \
+	rm out/target/product/J608_PUBLIC/root/init.goldfish.rc; \
+	rm out/target/product/J608_PUBLIC/root/init.project.rc; \
+	rm out/target/product/J608_PUBLIC/root/init.protect.rc; \
 	
 	cat $(INSTALLED_RAMDISK_TARGET).mtk.header $(INSTALLED_RAMDISK_TARGET) \
 		> $@
