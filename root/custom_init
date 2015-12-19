@@ -1,13 +1,45 @@
 #!/sbin/busybox sh
 
+BB=/sbin/busybox
+
 cd /
 
-/sbin/busybox mkdir /tmp
-/sbin/busybox mount -t tmpfs tmpfs /tmp
-/sbin/busybox mount -t proc proc /proc
-/sbin/busybox sed -e 's/fps\=5934/fps\=5934 androidboot\.selinux\=permissive/' /proc/cmdline > /tmp/cmdline
-/sbin/busybox mount --bind -o ro /tmp/cmdline /proc/cmdline
+exec >>boot.txt 2>&1
 
-/sbin/busybox chmod 755 /init2
-/sbin/busybox mv /init2 /init
+$BB mkdir /tmp
+$BB mount -t tmpfs tmpfs /tmp
+$BB mount -t proc proc /proc
+$BB sed -e 's/boot_reason\=4/boot_reason\=4 androidboot\.selinux\=permissive/' /proc/cmdline > /tmp/cmdline
+$BB mount --bind -o ro /tmp/cmdline /proc/cmdline
+
+$BB echo "Creating mounts dirs"
+$BB mkdir /dev/block
+$BB mkdir /mnt
+$BB chmod 755 /mnt
+$BB mkdir /tmp
+
+$BB echo "Generating devices nodes"
+$BB mknod /dev/block/mmcblk0 b 179 0
+$BB mknod /dev/block/mmcblk0p7 b 179 7
+
+$BB echo "Mounting"
+$BB mount -t tmpfs tmpfs /tmp
+$BB mount -t proc proc /proc
+
+$BB echo "Mounting DATA"
+$BB mount -t ext4 -o noatime,nodiratime,data=writeback,barrier=0,discard,nosuid,nodev,noauto_da_alloc,journal_async_commit,errors=panic /dev/block/mmcblk0p7 /data
+
+$BB echo "Read SERIALNO"
+SERIALNO=`$BB cat /data/serial_number`
+
+$BB echo "Add SERIALNO to cmdline"
+$BB sed -e "s/fps\=5590/fps\=5590 androidboot\.serialno\=$SERIALNO/" /proc/cmdline > /tmp/cmdline
+$BB mount --bind -o ro /tmp/cmdline /proc/cmdline
+
+$BB echo "Umount DATA"
+$BB umount -f /data
+
+$BB echo "Starting init.."
+$BB chmod 755 /init2
+$BB mv /init2 /init
 exec /init

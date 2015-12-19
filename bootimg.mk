@@ -45,6 +45,10 @@ $(INSTALLED_RAMDISK_TARGET).mtk: $(INSTALLED_RAMDISK_TARGET).mtk.header
 	rm out/target/product/J608_PUBLIC/root/init.goldfish.rc; \
 	rm out/target/product/J608_PUBLIC/root/init.project.rc; \
 	rm out/target/product/J608_PUBLIC/root/init.protect.rc; \
+
+	#mediatek related hacks
+	sed -i '565s/system/root/' out/target/product/J608_PUBLIC/root/init.rc
+	sed -i '576s/media/root/' out/target/product/J608_PUBLIC/root/init.rc
 	
 	cat $(INSTALLED_RAMDISK_TARGET).mtk.header $(INSTALLED_RAMDISK_TARGET) \
 		> $@

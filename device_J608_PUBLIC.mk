@@ -51,6 +51,18 @@ PRODUCT_COPY_FILES += \
     device/doogee/J608_PUBLIC/root/init.protect.rc:root/init.protect.rc \
     device/doogee/J608_PUBLIC/root/init.project.rc:root/init.project.rc \
     device/doogee/J608_PUBLIC/root/init.usb.rc:root/init.usb.rc \
+    device/doogee/J608_PUBLIC/root/ueventd.mt6582.rc:root/ueventd.mt6582.rc \
+    device/doogee/J608_PUBLIC/root/ueventd.rc:root/ueventd.rc \
+    device/doogee/J608_PUBLIC/root/init.mt6582.usb.rc:root/init.mt6582.usb.rc \
+    device/doogee/J608_PUBLIC/root/init.modem.rc:root/init.modem.rc \
+    device/doogee/J608_PUBLIC/root/init.fuse.rc:root/init.fuse.rc \
+    device/doogee/J608_PUBLIC/root/init.charging.rc:root/init.charging.rc \
+    device/doogee/J608_PUBLIC/root/init.aee.rc:root/init.aee.rc \
+    device/doogee/J608_PUBLIC/root/factory_init.project.rc:root/factory_init.project.rc \
+    device/doogee/J608_PUBLIC/root/factory_init.rc:root/factory_init.rc \
+    device/doogee/J608_PUBLIC/root/meta_init.project.rc:root/meta_init.project.rc \
+    device/doogee/J608_PUBLIC/root/meta_init.rc:root/meta_init.rc \
+    device/doogee/J608_PUBLIC/root/meta_init.modem.rc:root/meta_init.modem.rc \
     device/doogee/J608_PUBLIC/root/sbin/busybox:root/sbin/busybox \
     device/doogee/J608_PUBLIC/root/enableswap.sh:root/enableswap.sh
     
@@ -84,7 +96,7 @@ PRODUCT_PROPERTY_OVERRIDES := \
 
 DEFAULT_PROPERTY_OVERRIDES += ro.adb.secure=0
 DEFAULT_PROPERTY_OVERRIDES += ro.secure=0
-DEFAULT_PROPERTY_OVERRIDES += ro.allow.mock.location=0
+DEFAULT_PROPERTY_OVERRIDES += ro.allow.mock.location=1
 ADDITIONAL_DEFAULT_PROPERTIES += persist.mtk.aee.aed=on
 ADDITIONAL_DEFAULT_PROPERTIES += persist.service.acm.enable=0
 ADDITIONAL_DEFAULT_PROPERTIES += ro.mount.fs=EXT4
